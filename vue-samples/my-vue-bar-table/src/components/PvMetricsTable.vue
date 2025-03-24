@@ -71,30 +71,33 @@ const normalizedData = computed(() => {
 
 <style scoped>
 .chart-table {
-  width: 100%;
+  width: 400px; /* ← 横幅を固定 */
   border-collapse: collapse;
   font-size: 14px;
   border: 1px solid #ccc;
-  table-layout: fixed; /* ✅ 列幅を固定サイズにする */
+  table-layout: fixed;
+  margin: 0 left; /* ← 中央寄せ（任意） */
 }
 
 .chart-table th,
 .chart-table td {
   border: 1px solid #ccc;
-  padding: 6px 10px;
-  text-align: right; /* ✅ デフォルトは右揃え */
+  padding: 2px 6px; /* 高さを小さく */
+  text-align: right;
+  font-size: 12px;
+  height: 22px;
 }
 
 .chart-table th:first-child,
 .chart-table td:first-child {
-  width: 110px; /* ✅ 日付カラムの横幅を適切なサイズに固定 */
+  width: 100px;
   text-align: left;
-  white-space: nowrap; /* ✅ 折り返し防止 */
+  white-space: nowrap;
 }
 
 .bar-cell {
   position: relative;
-  height: 24px;
+  height: 12px; /* バーの高さを小さく */
   background: transparent;
   overflow: hidden;
 }
@@ -105,18 +108,24 @@ const normalizedData = computed(() => {
   left: 0;
   height: 100%;
   z-index: 1;
-  border-radius: 0;
+  border-radius: 4px;
 }
 
 .bar-value {
   position: absolute;
-  right: 10px;
+  right: 4px;
   z-index: 2;
   font-weight: bold;
   color: black;
+  font-size: 10px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  line-height: 12px;
+  height: 12px;
 }
 
-/* ✅ 色スタイル */
+/* 色スタイル */
 .pv {
   background: linear-gradient(to right, #2e7d32, #66bb6a, #c8e6c9);
 }
@@ -125,9 +134,5 @@ const normalizedData = computed(() => {
 }
 .click {
   background: linear-gradient(to right, #ff6f00, #ffa726, #ffcc80);
-}
-.chart-table td:first-child {
-  text-align: left; /* ✅ 日付のカラムだけ左寄せ */
-  white-space: nowrap; /* ✅ 長い日付でも折り返さない */
 }
 </style>
